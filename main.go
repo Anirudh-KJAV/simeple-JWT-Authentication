@@ -148,6 +148,7 @@ func AuthMiddleware() gin.HandlerFunc {
 
 		if err != nil || !token.Valid {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
+			log.Println("Token parsing error:", err)
 			return
 		}
 
